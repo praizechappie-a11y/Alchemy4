@@ -1,0 +1,15 @@
+[package]
+name = "stellar-payments"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["lib", "cdylib"]
+
+[dependencies]
+soroban-sdk = { workspace = true }
+alchemy4-payment-types = { path = "../../crates/alchemy4-payment-types" }
+alchemy4-errors = { path = "../../crates/alchemy4-errors" }
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }

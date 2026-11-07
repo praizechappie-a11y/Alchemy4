@@ -1,3 +1,4 @@
+# Alchemy4 Workspace - Stellar Payment Integration Platform
 # Workspace configuration with consistent WASM optimization
 # All contracts use the release profile below for production builds
 # Additional configuration in .cargo/config.toml ensures cross-target consistency
@@ -5,14 +6,17 @@
 [workspace]
 resolver = "2"
 members = [
-  "crates/hermes-errors",
-  "crates/hermes-codegen",
+  "crates/alchemy4-errors",
+  "crates/alchemy4-codegen",
+  "crates/alchemy4-payment-types",
   "contracts/*",
   "contracts/predictify-hybrid/fuzz",
   "contracts/disputes/fuzz",
   "contracts/resolution/fuzz",
   "contracts/auction",
   "contracts/analytics",
+  "contracts/stellar-payments",
+  "contracts/cross-border-router",
 ]
 exclude = []
 

@@ -10,6 +10,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial CHANGELOG.md following Keep a Changelog format
 - CI check requiring CHANGELOG.md updates for PRs modifying contract code
+- **stellar-payments** contract: Core payment engine for Stellar asset transfers
+  - Deposits and withdrawals with balance tracking
+  - Immediate payments with configurable fee deduction (basis points + minimum)
+  - Escrow payments with time-locks and HTLC-style conditional settlement
+  - Batch payment dispatch supporting up to 100 recipients per transaction
+  - Two-phase validation (all-or-nothing) and sequential execution
+  - Payment status querying and refund operations
+  - Event emission for off-chain indexing (PaymentCreated, PaymentSettled, PaymentRefunded, EscrowLocked, BalanceUpdated)
+- **cross-border-router** contract: Cross-border payment routing via Stellar DEX
+  - Route discovery and caching with 60-minute TTL
+  - Multi-hop currency conversion simulation
+  - Country-level sanctions checking (OFAC-style blocking)
+  - Per-corridor volume and slippage limits
+  - Cross-border payment event emission (RouteCached, PaymentRouted, RoutingFailed)
+- **hermes-payment-types** library: Shared payment abstractions
+  - PaymentStatus, PaymentOrder, PaymentResult, FeeConfig types
+  - CorridorConfig and CrossBorderPayment types for cross-border flows
+  - PaymentGateway and ComplianceOracle traits for modular payment implementations
+  - PaymentError enum with stable error codes (505–517)
+- **hermes-errors** extended: Added payment error definitions (codes 505–517)
+  - Unauthorized, PaymentNotFound, InvalidAmount, InvalidAsset, InsufficientBalance
+  - ConditionNotMet, PaymentLocked, PaymentAlreadySettled, AssetTransferFailed
+  - RoutingFailed, ComplianceCheckFailed, BatchLimitExceeded, StorageFull
+- **Documentation**: PAYMENT_INTEGRATION.md guide with architecture, flows, and examples
 - **predictify-hybrid**: `update_market_question` entrypoint lets a market creator fix a typo in the question before any stake is committed. Updates are rejected once `total_staked != 0`, after `end_time`, outside the `Active` state, or for callers other than the market creator; the stored metadata commitment is refreshed so cached metadata fails verification (closes #4)
 
 ### Changed

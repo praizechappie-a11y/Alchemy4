@@ -1,4 +1,4 @@
-//! # Stellar Payments Contract
+//! # Alchemy4 Stellar Payments Contract
 //!
 //! Core payment engine for Stellar-issued assets. Handles deposits, withdrawals,
 //! escrow, and batch payment settlement.
@@ -24,7 +24,7 @@ use soroban_sdk::{
 
 pub use errors::{Error, PaymentError};
 use events::*;
-use hermes_payment_types::types::*;
+use alchemy4_payment_types::types::*;
 use storage::{self, DataKey, *};
 
 /// Maximum batch size (100 orders per batch).

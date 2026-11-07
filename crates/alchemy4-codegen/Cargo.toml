@@ -1,0 +1,8 @@
+[package]
+name = "alchemy4-codegen"
+version = "0.1.0"
+edition = "2021"
+description = "Build-time code generation for Alchemy4 contracts from canonical error registry"
+
+[dependencies]
+alchemy4-errors = { path = "../alchemy4-errors" }

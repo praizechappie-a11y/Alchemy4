@@ -1,4 +1,4 @@
-# Contributing to Hermes
+# Contributing to Alchemy4
 
 Thank you for contributing! This document covers the development workflow,
 testing requirements, and operational scripts you need to know about.

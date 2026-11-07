@@ -236,6 +236,39 @@ pub fn all_errors() -> Vec<ErrorDefinition> {
             "The requested operation is not permitted in the current contract state.",
         )
         .with_range(130, 139),
+
+        // =====================================================================
+        // PAYMENT SYSTEM ERRORS (codes 500–599)
+        // =====================================================================
+        // Scope: stellar-payments, cross-border-router
+        // Ranges: 505–509 (auth & balance), 510–517 (payment lifecycle & operations)
+
+        ErrorDefinition::new(505, "Unauthorized", "Caller is not authorized to perform the requested action.")
+            .with_range(505, 599),
+        ErrorDefinition::new(506, "PaymentNotFound", "The requested payment order was not found.")
+            .with_range(505, 599),
+        ErrorDefinition::new(507, "InvalidAmount", "Payment amount is invalid (zero, negative, or exceeds limits).")
+            .with_range(505, 599),
+        ErrorDefinition::new(508, "InvalidAsset", "Asset contract address is invalid or not a valid token.")
+            .with_range(505, 599),
+        ErrorDefinition::new(509, "InsufficientBalance", "Payer balance is insufficient for the payment.")
+            .with_range(505, 599),
+        ErrorDefinition::new(510, "ConditionNotMet", "HTLC condition (preimage) does not match or was not provided.")
+            .with_range(505, 599),
+        ErrorDefinition::new(511, "PaymentLocked", "Payment is still locked in escrow; unlock time not yet reached.")
+            .with_range(505, 599),
+        ErrorDefinition::new(512, "PaymentAlreadySettled", "Payment has already been settled or refunded; no further modifications allowed.")
+            .with_range(505, 599),
+        ErrorDefinition::new(513, "AssetTransferFailed", "Token contract call failed or balance transfer rejected.")
+            .with_range(505, 599),
+        ErrorDefinition::new(514, "RoutingFailed", "No cross-border route found for the asset pair or route cache expired.")
+            .with_range(505, 599),
+        ErrorDefinition::new(515, "ComplianceCheckFailed", "Compliance check (KYC/AML) rejected the payment.")
+            .with_range(505, 599),
+        ErrorDefinition::new(516, "BatchLimitExceeded", "Batch contains more than 100 payment orders.")
+            .with_range(505, 599),
+        ErrorDefinition::new(517, "StorageFull", "Contract storage has reached its capacity.")
+            .with_range(505, 599),
     ]
 }
 

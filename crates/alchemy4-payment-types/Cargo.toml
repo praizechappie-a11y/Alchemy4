@@ -1,0 +1,11 @@
+[package]
+name = "alchemy4-payment-types"
+version = "0.1.0"
+edition = "2021"
+description = "Canonical payment types, traits, and error codes for Alchemy4 platform"
+
+[dependencies]
+soroban-sdk = { workspace = true }
+alchemy4-errors = { path = "../alchemy4-errors" }
+
+[lib]

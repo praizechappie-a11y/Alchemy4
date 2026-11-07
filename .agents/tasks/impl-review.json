@@ -1,0 +1,34 @@
+{
+  "verdict": "APPROVED",
+  "findings": [
+    {
+      "label": "Batch partial settlement asymmetry",
+      "description": "Batch validation is atomic (all-or-nothing on validation failure) but execution is sequential (partial settlement possible on mid-batch errors). Callers must handle recovery; no automatic rollback or retry. Clarify expectations in API docs and error reporting."
+    },
+    {
+      "label": "Fee calculation nonce tracking unused",
+      "description": "Event emission hardcodes nonce values (0–8) instead of using incremented per-event-type counters. EventNonce struct is defined but never queried or incremented. Offline indexing may conflate events with colliding nonce values across event types."
+    },
+    {
+      "label": "Escrow state machine lacks preimage validation detail",
+      "description": "Escrow with condition_hash compares BytesN<32> directly but doesn't specify hash algorithm or preimage format. Caller must hash the preimage before passing it to settle_escrow(). This works but is worth documenting or delegating hashing to the contract for better UX."
+    },
+    {
+      "label": "Cross-border router TTL renewal deferred",
+      "description": "Route caching is implemented but TTL renewal on find_best_route() is not. Routes could expire mid-transaction if not accessed within 60 minutes. Acceptable for now as a known gap; route expiry is catchable and triggers re-submission."
+    },
+    {
+      "label": "Compliance check not invoked in stellar-payments",
+      "description": "register_compliance_check() stores the contract address but no payment entrypoint actually calls it. Compliance hooks are registered but never used; settlement proceeds without checking. Compliance integration point exists but is non-functional in this iteration."
+    },
+    {
+      "label": "Fee balance withdrawal lacks origin tracking",
+      "description": "withdraw_fees() allows admin to withdraw all fees for an asset without tracking which payments generated them. No audit trail of fee source. Acceptable for fees (fungible, not privacy-sensitive) but limits transparency."
+    },
+    {
+      "label": "Initial fee recipient defaults to contract address",
+      "description": "When FeeConfig has no explicit fee_recipient, it defaults to the contract's own address. Fees can then only be withdrawn by the admin. This works but is non-obvious; document that fee_recipient must be explicitly set in config if a different address is desired."
+    }
+  ],
+  "reviewDoc": "c:\\Users\\LENOVO PC\\Desktop\\New folder 111\\hermes\\.agents\\tasks\\impl-review.md"
+}

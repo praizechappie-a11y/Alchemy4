@@ -466,6 +466,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "cross-border-router"
+version = "0.1.0"
+dependencies = [
+ "hermes-errors",
+ "hermes-payment-types",
+ "soroban-sdk",
+]
+
+[[package]]
 name = "crossbeam-deque"
 version = "0.8.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1002,6 +1011,14 @@ version = "0.1.0"
 dependencies = [
  "serde",
  "serde_json",
+]
+
+[[package]]
+name = "hermes-payment-types"
+version = "0.1.0"
+dependencies = [
+ "hermes-errors",
+ "soroban-sdk",
 ]
 
 [[package]]
@@ -2132,6 +2149,15 @@ name = "static_assertions"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
+
+[[package]]
+name = "stellar-payments"
+version = "0.1.0"
+dependencies = [
+ "hermes-errors",
+ "hermes-payment-types",
+ "soroban-sdk",
+]
 
 [[package]]
 name = "stellar-strkey"
